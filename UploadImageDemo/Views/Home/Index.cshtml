@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Image</title>
+    <style type="text/css">
+        .upload-image {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h2>图片资源</h2>
+
+    <ul class="nav">
+        <li>添加图片</li>
+    </ul>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div id="xx" class="upload-image"></div>
+        <input type="hidden" id="FileName" name="FileName" />
+
+        <input type="submit" value="保存" />
+    }
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    <script src="~/Scripts/upload.js"></script>
+    <script>
+        $(function () {
+            $('#xx').UploadImage();
+        })
+    </script>
+</body>
+</html>
